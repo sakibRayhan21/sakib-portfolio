@@ -1,143 +1,49 @@
+import Navbar from "../components/Navbar";
+
 export default function Home() {
   return (
-    <main>
-      {/* Navigation */}
-      <nav>
-        <h1>Sakib Rayhan</h1>
+    <main className="bg-black text-white">
+      <Navbar />
 
-        <div>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+      <section className="flex min-h-screen items-center justify-center px-6 pt-20">
+        <div className="mx-auto max-w-4xl text-center">
 
-      {/* Hero */}
-      <section>
-        <p>Hello, I'm</p>
-
-        <h2>Sakib Rayhan</h2>
-
-        <h3>Computer Science & Engineering Student</h3>
-
-        <p>
-          I build software, solve programming problems, and explore
-          full-stack development and AI.
-        </p>
-
-        <div>
-          <a href="#projects">View My Projects</a>
-          <a href="#contact">Contact Me</a>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about">
-        <h2>About Me</h2>
-
-        <p>
-          I am a Computer Science & Engineering student interested in
-          software development, competitive programming, AI, and
-          full-stack application development.
-        </p>
-      </section>
-
-      {/* Skills */}
-      <section id="skills">
-        <h2>Skills</h2>
-
-        <div>
-          <h3>Programming</h3>
-          <p>C++ • JavaScript • TypeScript • Python</p>
-        </div>
-
-        <div>
-          <h3>Frontend</h3>
-          <p>React • Next.js • Tailwind CSS</p>
-        </div>
-
-        <div>
-          <h3>Backend</h3>
-          <p>Node.js • REST API</p>
-        </div>
-
-        <div>
-          <h3>Database</h3>
-          <p>PostgreSQL • Prisma</p>
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section id="projects">
-        <h2>Projects</h2>
-
-        <div>
-          <h3>My Projects</h3>
-
-          <p>
-            Projects will be dynamically loaded from the database later.
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-blue-500">
+            Hello, I'm
           </p>
+
+          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+            Sakib Rayhan
+          </h1>
+
+          <h2 className="mt-4 text-2xl font-semibold text-gray-300 sm:text-3xl">
+            Full-Stack Developer
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-400 sm:text-lg">
+            I build modern web applications, solve programming problems,
+            and explore the world of software engineering, AI, and
+            full-stack development.
+          </p>
+
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="#projects"
+              className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-500"
+            >
+              View My Projects
+            </a>
+
+            <a
+              href="#contact"
+              className="rounded-lg border border-gray-700 px-6 py-3 font-medium text-gray-200 transition hover:border-gray-500 hover:text-white"
+            >
+              Contact Me
+            </a>
+          </div>
+
         </div>
       </section>
-
-      {/* Education */}
-      <section id="education">
-        <h2>Education</h2>
-
-        <div>
-          <h3>B.Sc. in Computer Science & Engineering</h3>
-          <p>Khwaja Yunus Ali University</p>
-        </div>
-      </section>
-
-      {/* Achievements */}
-      <section id="achievements">
-        <h2>Achievements</h2>
-
-        <p>
-          Competitive programming, programming contests, projects,
-          research, and other achievements will be added here.
-        </p>
-      </section>
-
-      {/* Contact */}
-      <section id="contact">
-        <h2>Contact Me</h2>
-
-        <p>
-          Have a project or opportunity? Feel free to get in touch.
-        </p>
-
-        <form>
-          <input
-            type="text"
-            placeholder="Your Name"
-            name="name"
-          />
-
-          <input
-            type="email"
-            placeholder="Your Email"
-            name="email"
-          />
-
-          <textarea
-            placeholder="Your Message"
-            name="message"
-          />
-
-          <button type="submit">
-            Send Message
-          </button>
-        </form>
-      </section>
-
-      {/* Footer */}
-      <footer>
-        <p>© 2026 Sakib Rayhan. All rights reserved.</p>
-      </footer>
     </main>
   );
 }
