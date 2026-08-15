@@ -25,18 +25,28 @@ model Skill {
   level     Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([name, category])
+}
+model Project {
+  id           Int          @id @default(autoincrement())
+  title        String
+  description  String
+  image        String?
+  githubUrl    String?
+  liveUrl      String?
+  featured     Boolean      @default(false)
+  technologies Technology[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 }
 
-model Project {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String
-  image       String?
-  githubUrl   String?
-  liveUrl     String?
-  featured    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Technology {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Education {
@@ -61,7 +71,7 @@ model Achievement {
 
 model SocialLink {
   id        Int      @id @default(autoincrement())
-  platform  String
+  platform String @unique
   url       String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

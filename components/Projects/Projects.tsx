@@ -1,9 +1,55 @@
+
+"use client";
+
+import { useEffect, useState } from "react";
+
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  image: string | null;
+  githubUrl: string | null;
+  liveUrl: string | null;
+  featured: boolean;
+  technologies: {
+    id: number;
+    name: string;
+  }[];
+};
+
 export default function Projects() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const response = await fetch("/api/projects");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch projects");
+        }
+
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error(error);
+        setError("Failed to load projects.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProjects();
+  }, []);
+
   return (
     <section id="projects" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
 
-        <div className="mb-12">
+        {/* Section Header */}
+        <div className="mb-14">
           <p className="text-sm font-medium uppercase tracking-[0.3em] text-blue-500">
             My Work
           </p>
@@ -12,158 +58,130 @@ export default function Projects() {
             Featured Projects
           </h2>
 
-          <p className="mt-4 max-w-2xl text-gray-400">
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-gray-400">
             A selection of projects that demonstrate my experience
             with software development, AI, and full-stack technologies.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Loading */}
+        {loading && (
+          <p className="text-gray-400">
+            Loading projects...
+          </p>
+        )}
 
-          {/* Project 1 */}
-          <article className="group overflow-hidden rounded-2xl border border-gray-800 bg-gray-950 transition duration-300 hover:-translate-y-2 hover:border-blue-500">
+        {/* Error */}
+        {error && (
+          <p className="text-red-400">
+            {error}
+          </p>
+        )}
 
-            <div className="flex h-48 items-center justify-center bg-gray-900">
-              <span className="text-5xl">??</span>
-            </div>
+        {/* No Projects */}
+        {!loading && !error && projects.length === 0 && (
+          <div className="rounded-2xl border border-gray-800 bg-gray-950 p-10 text-center">
+            <p className="text-gray-400">
+              No projects available yet.
+            </p>
+          </div>
+        )}
 
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold">
-                Offline University Messenger
-              </h3>
+        {/* Projects */}
+        {!loading && !error && projects.length > 0 && (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
-              <p className="mt-4 leading-7 text-gray-400">
-                A communication platform designed to help university
-                students communicate when internet connectivity is
-                limited or unavailable.
-              </p>
+            {projects.map((project) => (
+              <article
+                key={project.id}
+                className="group overflow-hidden rounded-2xl border border-gray-800 bg-gray-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/60 hover:shadow-blue-500/10"
+              >
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  Next.js
-                </span>
+                {/* Project Image */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-gray-900">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center text-gray-600">
+                      No Image
+                    </div>
+                  )}
 
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  Node.js
-                </span>
+                  {/* Featured Badge */}
+                  {project.featured && (
+                    <span className="absolute left-4 top-4 rounded-full border border-blue-400/20 bg-gray-950/80 px-3 py-1 text-xs font-medium text-blue-400 backdrop-blur-sm">
+                      Featured
+                    </span>
+                  )}
+                </div>
 
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  PostgreSQL
-                </span>
-              </div>
+                {/* Content */}
+                <div className="p-5">
 
-              <div className="mt-6 flex gap-4">
-                <a
-                  href="#"
-                  className="text-sm font-medium text-white hover:text-blue-400"
-                >
-                  GitHub ?
-                </a>
+                  {/* Title */}
+                  <h3 className="text-lg font-semibold text-white transition-colors duration-300 group-hover:text-blue-400">
+                    {project.title}
+                  </h3>
 
-                <a
-                  href="#"
-                  className="text-sm font-medium text-white hover:text-blue-400"
-                >
-                  Live Demo ?
-                </a>
-              </div>
-            </div>
-          </article>
+                  {/* Description */}
+                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-400">
+                    {project.description}
+                  </p>
 
-          {/* Project 2 */}
-          <article className="group overflow-hidden rounded-2xl border border-gray-800 bg-gray-950 transition duration-300 hover:-translate-y-2 hover:border-blue-500">
+                  {/* Technologies */}
+                  {project.technologies.length > 0 && (
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {project.technologies.map((technology) => (
+                        <span
+                          key={technology.id}
+                          className="rounded-full border border-gray-800 bg-gray-900 px-3 py-1 text-xs text-gray-300"
+                        >
+                          {technology.name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
-            <div className="flex h-48 items-center justify-center bg-gray-900">
-              <span className="text-5xl">??</span>
-            </div>
+                  {/* Actions */}
+                  <div className="mt-6 flex items-center gap-3">
 
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold">
-                AI Medical Explainability
-              </h3>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center rounded-lg border border-gray-700 px-4 py-2 text-sm font-medium text-gray-200 transition hover:border-blue-500 hover:text-blue-400"
+                      >
+                        GitHub
+                        <span className="ml-2">↗</span>
+                      </a>
+                    )}
 
-              <p className="mt-4 leading-7 text-gray-400">
-                An AI research project focused on making medical
-                machine learning predictions more understandable
-                through explainable AI techniques.
-              </p>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-500"
+                      >
+                        Live Demo
+                        <span className="ml-2">↗</span>
+                      </a>
+                    )}
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  Python
-                </span>
+                  </div>
 
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  Machine Learning
-                </span>
+                </div>
+              </article>
+            ))}
 
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  XAI
-                </span>
-              </div>
+          </div>
+        )}
 
-              <div className="mt-6 flex gap-4">
-                <a
-                  href="#"
-                  className="text-sm font-medium text-white hover:text-blue-400"
-                >
-                  GitHub ?
-                </a>
-
-                <a
-                  href="#"
-                  className="text-sm font-medium text-white hover:text-blue-400"
-                >
-                  Research ?
-                </a>
-              </div>
-            </div>
-          </article>
-
-          {/* Project 3 */}
-          <article className="group overflow-hidden rounded-2xl border border-gray-800 bg-gray-950 transition duration-300 hover:-translate-y-2 hover:border-blue-500">
-
-            <div className="flex h-48 items-center justify-center bg-gray-900">
-              <span className="text-5xl">?</span>
-            </div>
-
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold">
-                Competitive Programming
-              </h3>
-
-              <p className="mt-4 leading-7 text-gray-400">
-                A collection of algorithmic problem-solving solutions
-                covering data structures, algorithms, mathematics,
-                graphs, and optimization.
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  C++
-                </span>
-
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  Algorithms
-                </span>
-
-                <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs text-blue-400">
-                  Data Structures
-                </span>
-              </div>
-
-              <div className="mt-6 flex gap-4">
-                <a
-                  href="#"
-                  className="text-sm font-medium text-white hover:text-blue-400"
-                >
-                  GitHub ?
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
       </div>
     </section>
   );

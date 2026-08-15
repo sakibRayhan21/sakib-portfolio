@@ -14,10 +14,13 @@ const projectSchema = z.object({
 export async function GET() {
   try {
     const projects = await prisma.project.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
+  include: {
+    technologies: true,
+  },
+  orderBy: {
+    createdAt: "desc",
+  },
+});
 
     return NextResponse.json(projects);
   } catch (error) {
