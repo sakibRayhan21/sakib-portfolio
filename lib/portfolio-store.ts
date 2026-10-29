@@ -29,6 +29,7 @@ export interface Profile {
   githubUrl: string;
   linkedinUrl: string;
   resumeUrl: string;
+  profileImage?: string;
   whatIDo: string[];
 }
 
@@ -217,6 +218,7 @@ function getFallbackData(): PortfolioData {
       githubUrl: "https://github.com/sakibRayhan21",
       linkedinUrl: "https://linkedin.com/in/sakibrayhan",
       resumeUrl: "#",
+      profileImage: "/avatar.svg",
       whatIDo: [
         "Full-Stack Web Development",
         "Competitive Programming",

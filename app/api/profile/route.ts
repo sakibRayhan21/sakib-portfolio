@@ -12,6 +12,7 @@ const profileSchema = z.object({
   githubUrl: z.string().optional(),
   linkedinUrl: z.string().optional(),
   resumeUrl: z.string().optional(),
+  profileImage: z.string().optional(),
   whatIDo: z.array(z.string()).optional(),
 });
 

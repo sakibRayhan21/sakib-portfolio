@@ -47,6 +47,15 @@
   - Added responsive Navbar Admin button and custom SVG icons ([components/Icons.tsx](file:///d:/Project/Port%20folio/components/Icons.tsx)).
   - Verified Next.js build compilation (`npm run build`) and runtime HTTP 200 responses.
 
+### Session: October 30, 2026
+- **Task 9:** Enhanced Hero Section with Square-Shaped Photo:
+  - Designed responsive two-column Hero layout with balanced left-aligned text and right-aligned square image container.
+  - Implemented square aspect ratio frame (`aspect-square`) with ambient neon gradient glow, double-border accents, and interactive hover zoom.
+  - Added modern status pill ("Online / Coding • CSE") floating at the base of the square frame.
+  - Created customizable `profileImage` schema property across data store, API, and Admin Profile tab with a live square preview.
+  - Created default high-tech avatar graphic in [public/avatar.svg](file:///d:/Project/Port%20folio/public/avatar.svg).
+  - Verified full build compilation (`npm run build`) and visual rendering.
+
 ---
 
 ## 🛠️ Architecture & Technical Decisions Log

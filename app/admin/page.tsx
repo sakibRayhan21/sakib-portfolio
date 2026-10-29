@@ -29,6 +29,7 @@ interface ProfileData {
   githubUrl: string;
   linkedinUrl: string;
   resumeUrl: string;
+  profileImage?: string;
   whatIDo: string[];
 }
 
@@ -60,6 +61,7 @@ function AdminContent() {
     githubUrl: "",
     linkedinUrl: "",
     resumeUrl: "",
+    profileImage: "/avatar.svg",
     whatIDo: [],
   });
   const [newFocusItem, setNewFocusItem] = useState("");
@@ -946,17 +948,48 @@ function AdminContent() {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">
-                      Resume Link / File URL
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. /resume.pdf or https://drive.google.com/..."
-                      value={profile.resumeUrl}
-                      onChange={(e) => setProfile({ ...profile, resumeUrl: e.target.value })}
-                      className="w-full rounded-xl border border-gray-800 bg-gray-900 px-3.5 py-2.5 text-sm text-white focus:border-blue-500 focus:outline-none"
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">
+                        Resume Link / File URL
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. /resume.pdf or https://drive.google.com/..."
+                        value={profile.resumeUrl}
+                        onChange={(e) => setProfile({ ...profile, resumeUrl: e.target.value })}
+                        className="w-full rounded-xl border border-gray-800 bg-gray-900 px-3.5 py-2.5 text-sm text-white focus:border-blue-500 focus:outline-none"
+                      />
+
+                      <div className="mt-4">
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">
+                          Hero Square Photo URL or Local Path
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="e.g. /avatar.svg, /profile.jpg, or https://..."
+                          value={profile.profileImage || ""}
+                          onChange={(e) => setProfile({ ...profile, profileImage: e.target.value })}
+                          className="w-full rounded-xl border border-gray-800 bg-gray-900 px-3.5 py-2.5 text-sm text-white focus:border-blue-500 focus:outline-none"
+                        />
+                        <p className="mt-1 text-[11px] text-gray-500">
+                          Place an image in <code>public/</code> (like <code>/my-photo.jpg</code>) or paste any online image URL.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-center justify-center rounded-xl border border-gray-800 bg-gray-900/50 p-4">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-2">
+                        Square Photo Preview
+                      </span>
+                      <div className="h-28 w-28 aspect-square rounded-xl border-2 border-blue-500/40 bg-gray-950 overflow-hidden shadow-lg">
+                        <img
+                          src={profile.profileImage || "/avatar.svg"}
+                          alt="Profile Preview"
+                          className="h-full w-full aspect-square object-cover"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   {/* Focus Areas */}
