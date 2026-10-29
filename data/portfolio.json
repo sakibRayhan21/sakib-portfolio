@@ -1,0 +1,195 @@
+{
+  "profile": {
+    "name": "Sakib Rayhan",
+    "title": "Full-Stack Developer & CSE Student",
+    "bio": "I build modern web applications, solve programming problems, and explore the world of software engineering, AI, and full-stack development.",
+    "aboutP1": "I am a Computer Science and Engineering student with a strong interest in software development, competitive programming, artificial intelligence, and modern web technologies.",
+    "aboutP2": "I enjoy turning ideas into practical software and continuously improving my problem-solving and engineering skills through projects and programming challenges.",
+    "email": "sakib.rayhan.dev@example.com",
+    "githubUrl": "https://github.com/sakibRayhan21",
+    "linkedinUrl": "https://linkedin.com/in/sakibrayhan",
+    "resumeUrl": "#",
+    "whatIDo": [
+      "Full-Stack Web Development",
+      "Competitive Programming & Algorithms",
+      "AI & Machine Learning Exploration",
+      "Scalable API & Database Engineering"
+    ]
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "C++",
+      "category": "Programming",
+      "level": 90
+    },
+    {
+      "id": 2,
+      "name": "JavaScript",
+      "category": "Programming",
+      "level": 92
+    },
+    {
+      "id": 3,
+      "name": "TypeScript",
+      "category": "Programming",
+      "level": 88
+    },
+    {
+      "id": 4,
+      "name": "Python",
+      "category": "Programming",
+      "level": 82
+    },
+    {
+      "id": 5,
+      "name": "React",
+      "category": "Frontend",
+      "level": 90
+    },
+    {
+      "id": 6,
+      "name": "Next.js",
+      "category": "Frontend",
+      "level": 88
+    },
+    {
+      "id": 7,
+      "name": "Tailwind CSS",
+      "category": "Frontend",
+      "level": 94
+    },
+    {
+      "id": 8,
+      "name": "HTML & CSS",
+      "category": "Frontend",
+      "level": 95
+    },
+    {
+      "id": 9,
+      "name": "Node.js",
+      "category": "Backend",
+      "level": 85
+    },
+    {
+      "id": 10,
+      "name": "REST APIs",
+      "category": "Backend",
+      "level": 90
+    },
+    {
+      "id": 11,
+      "name": "Authentication",
+      "category": "Backend",
+      "level": 84
+    },
+    {
+      "id": 12,
+      "name": "Server-side Dev",
+      "category": "Backend",
+      "level": 82
+    },
+    {
+      "id": 13,
+      "name": "PostgreSQL",
+      "category": "Database & Tools",
+      "level": 85
+    },
+    {
+      "id": 14,
+      "name": "Prisma ORM",
+      "category": "Database & Tools",
+      "level": 86
+    },
+    {
+      "id": 15,
+      "name": "Git & GitHub",
+      "category": "Database & Tools",
+      "level": 90
+    },
+    {
+      "id": 16,
+      "name": "VS Code",
+      "category": "Database & Tools",
+      "level": 92
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Offline University Messenger",
+      "description": "A communication platform designed to help university students communicate when internet connectivity is limited or unavailable.",
+      "tags": [
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "WebSockets"
+      ],
+      "githubUrl": "https://github.com/sakibRayhan21",
+      "liveUrl": "https://offline-messenger.example.com",
+      "featured": true,
+      "image": "💬"
+    },
+    {
+      "id": 2,
+      "title": "AI Medical Explainability",
+      "description": "An AI research project focused on making medical machine learning predictions more understandable through explainable AI techniques.",
+      "tags": [
+        "Python",
+        "Machine Learning",
+        "XAI",
+        "SHAP"
+      ],
+      "githubUrl": "https://github.com/sakibRayhan21",
+      "liveUrl": "",
+      "featured": true,
+      "image": "🧠"
+    },
+    {
+      "id": 3,
+      "title": "Competitive Programming Solutions",
+      "description": "A curated collection of algorithmic problem-solving solutions covering data structures, algorithms, mathematics, graphs, and optimization.",
+      "tags": [
+        "C++",
+        "Algorithms",
+        "Data Structures",
+        "Problem Solving"
+      ],
+      "githubUrl": "https://github.com/sakibRayhan21",
+      "liveUrl": "",
+      "featured": true,
+      "image": "⚡"
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "institution": "Khwaja Yunus Ali University",
+      "degree": "Bachelor of Science in Computer Science & Engineering",
+      "startYear": 2022,
+      "endYear": 2026,
+      "status": "Current",
+      "description": "Studying computer science with a focus on programming, algorithms, software engineering, artificial intelligence, and modern computing technologies."
+    }
+  ],
+  "achievements": [
+    {
+      "id": 1,
+      "title": "Competitive Programming",
+      "icon": "🏆",
+      "description": "Active participation in competitive programming contests and algorithmic problem solving."
+    },
+    {
+      "id": 2,
+      "title": "Software Projects",
+      "icon": "🚀",
+      "description": "Building practical software projects to solve real-world problems and student needs."
+    },
+    {
+      "id": 3,
+      "title": "Research Interest",
+      "icon": "🔬",
+      "description": "Exploring artificial intelligence, machine learning, and explainable AI research."
+    }
+  ]
+}
